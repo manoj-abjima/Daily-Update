@@ -8,8 +8,8 @@
         <UseWinAuth>false</UseWinAuth>
         <WinAuthUserName />
         <WinAuthDomain />
-        <ServerName>(LocalDB)\MSSQLLocalDB</ServerName>
-        <PathOnServer />
+        <ServerName>.</ServerName>
+        <PathOnServer>/SSISDB/FirstSSIS/FirstSSIS</PathOnServer>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>

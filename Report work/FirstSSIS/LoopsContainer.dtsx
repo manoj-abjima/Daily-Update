@@ -1,0 +1,1814 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/17/2022 8:31:33 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MANOJ"
+  DTS:CreatorName="MANOJ\hp"
+  DTS:DTSID="{5DAFD3CD-6050-4AFC-AC7C-A6F1636CEFAF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="LoopsContainer"
+  DTS:PackageType="5"
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{16B3DB30-967E-48FF-B4CC-AF4CAEF29175}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Data]"
+      DTS:CreationName="FLATFILE"
+      DTS:Description="Data"
+      DTS:DTSID="{B71D82F5-D562-4AF4-BA70-98C2B0DD634C}"
+      DTS:ObjectName="Data">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="16393"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\hp\OneDrive\Desktop\data.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="id"
+              DTS:DTSID="{CEBBDAA0-00C8-4164-846A-873B91562D8D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="fname"
+              DTS:DTSID="{90A094D4-4C1E-4FD4-9527-B6F9191476F7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="lname"
+              DTS:DTSID="{71DED7A6-39FF-4C8B-90DE-4EBDFC1CB45C}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Redata]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{082CB079-B5AE-40DA-938F-8B20FB939584}"
+      DTS:ObjectName="Redata">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::VariablePath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="16393"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\hp\OneDrive\Desktop\SSIS\data.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="id"
+              DTS:DTSID="{039FC4B3-5A22-4DCF-A582-C327BD8132DD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="fname"
+              DTS:DTSID="{B4E27544-2EA2-495F-AA89-D6BFB82EF3DF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="lname"
+              DTS:DTSID="{99F58784-8401-4E00-8B36-F34DBAF7BEE6}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A205FB3E-4D16-4A9E-93BB-614F6832B6D5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{27742F7F-015F-45F9-9E11-F6ADD08F4D23}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="VariablePath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\hp\OneDrive\Desktop\SSIS\data.csv</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CSVLoop"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{2CFE0178-5BF3-4C5F-8DA5-02CB88785EA7}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CSVLoop">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{D763E7D4-66AA-4C1A-B1D7-95AA0E629BD4}"
+        DTS:ObjectName="{D763E7D4-66AA-4C1A-B1D7-95AA0E629BD4}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\hp\OneDrive\Desktop\SSIS" />
+            <FEFEProperty
+              FileSpec="*.*" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\CSVLoop\Import Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{03a5caae-3783-4086-91cb-067465405350}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Import Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\CSVLoop\Import Data\Conditional Split"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Conditional Split"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\CSVLoop\Import Data\Conditional Split.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Conditional Split.Inputs[Conditional Split Input].Columns[fname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="fname"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[fname]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Conditional Split.Inputs[Conditional Split Input].Columns[matchfname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="matchfname"
+                          lineageId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Match Output].Columns[matchfname]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Conditional Split.Outputs[Change]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Change"
+                      synchronousInputId="Package\CSVLoop\Import Data\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[fname]} != #{Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Match Output].Columns[matchfname]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">fname != matchfname</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Conditional Split.Outputs[No Change]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="No Change"
+                      synchronousInputId="Package\CSVLoop\Import Data\Conditional Split.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Conditional Split.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\CSVLoop\Import Data\Conditional Split.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CSVLoop\Import Data\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\CSVLoop\Import Data\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Data Conversion.Inputs[Data Conversion Input].Columns[id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="id"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Data Conversion.Inputs[Data Conversion Input].Columns[fname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="fname"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[fname]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\CSVLoop\Import Data\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]"
+                          name="Copy of id"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[id]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of fname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="500"
+                          lineageId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of fname]"
+                          name="Copy of fname"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[fname]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\CSVLoop\Import Data\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CSVLoop\Import Data\Flat File Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="16393"
+                  name="Flat File Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CSVLoop\Import Data\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Redata]"
+                      connectionManagerRefId="Package.ConnectionManagers[Redata]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[id]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[id]"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[fname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[fname]"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[fname]"
+                          name="fname"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[lname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[lname]"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[lname]"
+                          name="lname"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="fname" />
+                        <externalMetadataColumn
+                          refId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[lname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="lname" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CSVLoop\Import Data\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[SSIS Data]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[SSIS Data]) [refTable]
+where [refTable].[id] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="fname" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="lname" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Copy of id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Copy of fname" dataType="DT_STR" length="500" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[id]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CSVLoop\Import Data\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="{C2099F54-C313-457E-8D78-78C5A9DB0871}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[SSISDB]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\CSVLoop\Import Data\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Lookup.Inputs[Lookup Input].Columns[id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="id"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[id]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">id</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\CSVLoop\Import Data\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Match Output].Columns[matchfname]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Match Output].Columns[matchfname]"
+                          name="matchfname"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">fname</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\CSVLoop\Import Data\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\CSVLoop\Import Data\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CSVLoop\Import Data\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[SSIS Data]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CSVLoop\Import Data\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{C2099F54-C313-457E-8D78-78C5A9DB0871}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[SSISDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[lname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="lname"
+                          externalMetadataColumnId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[lname]"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[lname]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of id]"
+                          cachedDataType="i4"
+                          cachedName="Copy of id"
+                          externalMetadataColumnId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Copy of id]"
+                          lineageId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of fname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="500"
+                          cachedName="Copy of fname"
+                          externalMetadataColumnId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Copy of fname]"
+                          lineageId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of fname]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[fname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="fname"
+                          externalMetadataColumnId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fname]"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[fname]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[lname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="lname" />
+                        <externalMetadataColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Copy of id]"
+                          dataType="i4"
+                          name="Copy of id" />
+                        <externalMetadataColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Copy of fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="500"
+                          name="Copy of fname" />
+                        <externalMetadataColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="fname" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CSVLoop\Import Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CSVLoop\Import Data\Row Sampling"
+                  componentClassID="Microsoft.RowSampling"
+                  contactInfo="Row Sampling;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Randomly samples a specific number of rows from an input data flow. For example, use it randomly select products to feature on your Web site."
+                  name="Row Sampling">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the number of rows in the sample."
+                      expressionType="Notify"
+                      name="SamplingValue">10</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the seed for the random number generator."
+                      name="SamplingSeed">0</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\CSVLoop\Import Data\Row Sampling.Inputs[Row Sampling Input 1]"
+                      name="Row Sampling Input 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Inputs[Row Sampling Input 1].Columns[id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="id"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Inputs[Row Sampling Input 1].Columns[fname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="fname"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[fname]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Inputs[Row Sampling Input 1].Columns[lname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="lname"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[lname]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Inputs[Row Sampling Input 1].Columns[Copy of id]"
+                          cachedDataType="i4"
+                          cachedName="Copy of id"
+                          lineageId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Inputs[Row Sampling Input 1].Columns[Copy of fname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="500"
+                          cachedName="Copy of fname"
+                          lineageId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of fname]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Inputs[Row Sampling Input 1].Columns[matchfname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="matchfname"
+                          lineageId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Match Output].Columns[matchfname]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output]"
+                      name="Sampling Selected Output">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Output for rows in the sample"
+                          name="Selected">true</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[id]"
+                          name="id">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[id]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[fname]"
+                          name="fname">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[fname]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[lname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[lname]"
+                          name="lname">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[lname]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[Copy of id]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[Copy of id]"
+                          name="Copy of id">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[Copy of fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="500"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[Copy of fname]"
+                          name="Copy of fname">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of fname]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[matchfname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Selected Output].Columns[matchfname]"
+                          name="matchfname">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Match Output].Columns[matchfname]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output]"
+                      name="Sampling Unselected Output">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Output for rows in the sample"
+                          name="Selected">false</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[id]"
+                          name="id">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[id]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[fname]"
+                          name="fname">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[fname]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[lname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[lname]"
+                          name="lname">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[lname]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[Copy of id]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[Copy of id]"
+                          name="Copy of id">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of id]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[Copy of fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="500"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[Copy of fname]"
+                          name="Copy of fname">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of fname]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[matchfname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\CSVLoop\Import Data\Row Sampling.Outputs[Sampling Unselected Output].Columns[matchfname]"
+                          name="matchfname">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Input column lineage ID"
+                              name="InputColumnLineageID">#{Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Match Output].Columns[matchfname]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CSVLoop\Import Data\Updates"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Updates"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Updates]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CSVLoop\Import Data\Updates.Connections[OleDbConnection]"
+                      connectionManagerID="{C2099F54-C313-457E-8D78-78C5A9DB0871}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[SSISDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input].Columns[fname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="fname"
+                          externalMetadataColumnId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input].ExternalColumns[fname]"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[fname]" />
+                        <inputColumn
+                          refId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input].Columns[lname]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="lname"
+                          externalMetadataColumnId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input].ExternalColumns[lname]"
+                          lineageId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output].Columns[lname]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input].ExternalColumns[fname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="fname" />
+                        <externalMetadataColumn
+                          refId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input].ExternalColumns[lname]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="lname" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CSVLoop\Import Data\Updates.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Updates.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Updates.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CSVLoop\Import Data\Updates.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CSVLoop\Import Data\Updates.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\CSVLoop\Import Data.Paths[Change]"
+                  endId="Package\CSVLoop\Import Data\Updates.Inputs[OLE DB Destination Input]"
+                  name="Change"
+                  startId="Package\CSVLoop\Import Data\Conditional Split.Outputs[Change]" />
+                <path
+                  refId="Package\CSVLoop\Import Data.Paths[Data Conversion Output]"
+                  endId="Package\CSVLoop\Import Data\Lookup.Inputs[Lookup Input]"
+                  name="Data Conversion Output"
+                  startId="Package\CSVLoop\Import Data\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\CSVLoop\Import Data.Paths[Flat File Source Output]"
+                  endId="Package\CSVLoop\Import Data\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Flat File Source Output"
+                  startId="Package\CSVLoop\Import Data\Flat File Source.Outputs[Flat File Source Output]" />
+                <path
+                  refId="Package\CSVLoop\Import Data.Paths[Lookup Match Output]"
+                  endId="Package\CSVLoop\Import Data\Conditional Split.Inputs[Conditional Split Input]"
+                  name="Lookup Match Output"
+                  startId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\CSVLoop\Import Data.Paths[Lookup No Match Output]"
+                  endId="Package\CSVLoop\Import Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\CSVLoop\Import Data\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\CSVLoop\Import Data.Paths[No Change]"
+                  endId="Package\CSVLoop\Import Data\Row Sampling.Inputs[Row Sampling Input 1]"
+                  name="No Change"
+                  startId="Package\CSVLoop\Import Data\Conditional Split.Outputs[No Change]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CSVLoop\Moving file"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{3C7A1399-F125-4C0B-B03D-ED24ADA91B39}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Moving file"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::VariablePath"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="$Project::Parameter"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\CSVLoop.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{7D6AE373-668E-4CDC-B293-971462766926}"
+          DTS:From="Package\CSVLoop\Import Data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\CSVLoop\Moving file" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{CD4997F0-0D72-4718-980D-05C3D2454B8B}"
+          DTS:ObjectName="{CD4997F0-0D72-4718-980D-05C3D2454B8B}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::VariablePath" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Row Count"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CFF52FFC-FC9B-4499-B8F4-CB1E7B83C364}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Row Count"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C2099F54-C313-457E-8D78-78C5A9DB0871}"
+          SQLTask:SqlStatementSource="select count(1) from [SSIS Data]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3EE2C08F-8AFC-4C86-9644-40E8962D2FEE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C2099F54-C313-457E-8D78-78C5A9DB0871}"
+          SQLTask:SqlStatementSource="Truncate table [SSIS Data]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{82B5706E-0915-4B6F-9FDD-89861C9855DF}"
+      DTS:From="Package\Truncate"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\CSVLoop" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{8E450AFC-676E-401B-B661-18F606F2B36D}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::RowCount]&gt;0"
+      DTS:From="Package\Row Count"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Truncate" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{BDDDA948-BE19-4416-AEA4-AECD5DB90B47}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::RowCount]==0"
+      DTS:From="Package\Row Count"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\CSVLoop" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="132.8,41.6"
+          Id="Package\CSVLoop\Import Data"
+          TopLeft="77.1666591498589,36.2666678513421" />
+        <NodeLayout
+          Size="128,41.6"
+          Id="Package\CSVLoop\Moving file"
+          TopLeft="71.0333191937876,157.866669173771" />
+        <EdgeLayout
+          Id="Package\CSVLoop.PrecedenceConstraints[Constraint]"
+          TopLeft="146.899989171823,77.8666678513421">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80.0000013224285"
+              Start="0,0"
+              End="0,72.5000013224285">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5000013224285" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="305.6,256.8"
+          Size="305.6,300"
+          Id="Package\CSVLoop"
+          TopLeft="500.833313432005,131.733334380256" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Row Count"
+          TopLeft="142.499994337559,178.533334752189" />
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\Truncate"
+          TopLeft="304.999987880389,31.066666818195" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="364.599987880389,72.666666818195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="289.033325551616,59.0666675620608"
+              Start="0,0"
+              End="289.033325551616,51.5666675620608">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5333337810304" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5333337810304"
+                    Point2="0,29.5333337810304"
+                    Point3="4,29.5333337810304" />
+                  <mssgle:LineSegment
+                    End="285.033325551616,29.5333337810304" />
+                  <mssgle:CubicBezierSegment
+                    Point1="285.033325551616,29.5333337810304"
+                    Point2="289.033325551616,29.5333337810304"
+                    Point3="289.033325551616,33.5333337810304" />
+                  <mssgle:LineSegment
+                    End="289.033325551616,51.5666675620608" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="207.299994337559,178.533334752189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138.766660209497,-105.866667933994"
+              Start="0,0"
+              End="138.766660209497,-98.3666679339939">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-58.6786762470136" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-58.6786762470136"
+                    Point2="0,-62.6786762470136"
+                    Point3="4,-62.6786762470136" />
+                  <mssgle:LineSegment
+                    End="134.766660209497,-62.6786762470136" />
+                  <mssgle:CubicBezierSegment
+                    Point1="134.766660209497,-62.6786762470136"
+                    Point2="138.766660209497,-62.6786762470136"
+                    Point3="138.766660209497,-66.6786762470136" />
+                  <mssgle:LineSegment
+                    End="138.766660209497,-98.3666679339939" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="61.3833301047485,-57.6786762470136,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="272.099994337559,199.333334752189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="228.733319094447,82.399999628067"
+              Start="0,0"
+              End="221.233319094447,82.399999628067">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="110.366659547223,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="110.366659547223,0"
+                    Point2="114.366659547223,0"
+                    Point3="114.366659547223,4" />
+                  <mssgle:LineSegment
+                    End="114.366659547223,78.399999628067" />
+                  <mssgle:CubicBezierSegment
+                    Point1="114.366659547223,78.399999628067"
+                    Point2="114.366659547223,82.399999628067"
+                    Point3="118.366659547223,82.399999628067" />
+                  <mssgle:LineSegment
+                    End="221.233319094447,82.399999628067" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="106.366659547223,-22,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\CSVLoop\Import Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\CSVLoop\Import Data\Lookup"
+          TopLeft="439.166649215752,117.000000929832" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\CSVLoop\Import Data\Data Conversion"
+          TopLeft="423.333316511579,29.4666669008468" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\CSVLoop\Import Data\Flat File Source"
+          TopLeft="132.666666799121,28.7333323139615" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\CSVLoop\Import Data\OLE DB Destination"
+          TopLeft="734.166637493506,276.466668863826" />
+        <NodeLayout
+          Size="116.8,41.6"
+          Id="Package\CSVLoop\Import Data\Updates"
+          TopLeft="80.8333301213054,355.333336157269" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\CSVLoop\Import Data\Conditional Split"
+          TopLeft="216.666658057107,214.066668367916" />
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\CSVLoop\Import Data\Row Sampling"
+          TopLeft="394.166651003891,339.733336033291" />
+        <EdgeLayout
+          Id="Package\CSVLoop\Import Data.Paths[No Change]"
+          TopLeft="293.466658057107,255.666668367916">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="173.499992946784,84.0666676653757"
+              Start="0,0"
+              End="173.499992946784,76.5666676653757">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.0333338326878" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.0333338326878"
+                    Point2="0,42.0333338326878"
+                    Point3="4,42.0333338326878" />
+                  <mssgle:LineSegment
+                    End="169.499992946784,42.0333338326878" />
+                  <mssgle:CubicBezierSegment
+                    Point1="169.499992946784,42.0333338326878"
+                    Point2="173.499992946784,42.0333338326878"
+                    Point3="173.499992946784,46.0333338326878" />
+                  <mssgle:LineSegment
+                    End="173.499992946784,76.5666676653757" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="62.028648817142,47.0333338326878,49.4426953125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CSVLoop\Import Data.Paths[Lookup No Match Output]"
+          TopLeft="513.033315882418,158.600000929832">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="306.733321611087,117.866667933994"
+              Start="0,0"
+              End="306.733321611087,110.366667933994">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.1357580933234" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.1357580933234"
+                    Point2="0,48.1357580933234"
+                    Point3="4,48.1357580933234" />
+                  <mssgle:LineSegment
+                    End="302.733321611087,48.1357580933234" />
+                  <mssgle:CubicBezierSegment
+                    Point1="302.733321611087,48.1357580933234"
+                    Point2="306.733321611087,48.1357580933234"
+                    Point3="306.733321611087,52.1357580933234" />
+                  <mssgle:LineSegment
+                    End="306.733321611087,110.366667933994" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="97.5602740867935,53.1357580933234,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CSVLoop\Import Data.Paths[Lookup Match Output]"
+          TopLeft="478.099982549085,158.600000929832">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-184.633324491978,55.4666674380832"
+              Start="0,0"
+              End="-184.633324491978,47.9666674380832">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.6521215271612" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.6521215271612"
+                    Point2="0,22.6521215271612"
+                    Point3="-4,22.6521215271612" />
+                  <mssgle:LineSegment
+                    End="-180.633324491978,22.6521215271612" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-180.633324491978,22.6521215271612"
+                    Point2="-184.633324491978,22.6521215271612"
+                    Point3="-184.633324491978,26.6521215271612" />
+                  <mssgle:LineSegment
+                    End="-184.633324491978,47.9666674380832" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-140.508048964739,27.6521215271612,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CSVLoop\Import Data.Paths[Flat File Source Output]"
+          TopLeft="283.866666799121,49.8999996074041">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="139.466649712458,0"
+              Start="0,0"
+              End="131.966649712458,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="131.966649712458,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CSVLoop\Import Data.Paths[Data Conversion Output]"
+          TopLeft="498.449982863665,71.0666669008468">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.9333340289857"
+              Start="0,0"
+              End="0,38.4333340289857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.4333340289857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\CSVLoop\Import Data.Paths[Change]"
+          TopLeft="269.19999139044,255.666668367916">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-129.966661269135,99.6666677893529"
+              Start="0,0"
+              End="-129.966661269135,92.1666677893529">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.4831619680465" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.4831619680465"
+                    Point2="0,40.4831619680465"
+                    Point3="-4,40.4831619680465" />
+                  <mssgle:LineSegment
+                    End="-125.966661269135,40.4831619680465" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-125.966661269135,40.4831619680465"
+                    Point2="-129.966661269135,40.4831619680465"
+                    Point3="-129.966661269135,44.4831619680465" />
+                  <mssgle:LineSegment
+                    End="-129.966661269135,92.1666677893529" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-82.2971978220675,45.4831619680465,34.627734375,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
